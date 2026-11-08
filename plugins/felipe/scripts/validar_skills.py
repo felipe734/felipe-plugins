@@ -2,7 +2,7 @@
 """Validador del plugin Felipe (felipe).
 
 Mismas reglas que el validador de Verse, acotadas a Felipe OS: prefijo felipe-, registro con
-verse-trazabilidad, sección "Cómo se engrana en Felipe OS", presencia en el catálogo de
+felipe-trazabilidad, sección "Cómo se engrana en Felipe OS", presencia en el catálogo de
 felipe-os, correo solo por os-correo/verse-marca, sin secretos, versión subida y conteo
 del README. Corre en cada pull request y a mano:
 
@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 MODELOS_VALIDOS = {"haiku", "sonnet", "opus"}
-PROCESOS_FELIPE = {"Felipe OS", "Felipe recurrentes", "Correo", "Manual"}
+PROCESOS_FELIPE = {"Felipe OS", "Felipe recurrentes", "Felipe gym", "Correo", "Manual"}
 SECRETOS = [
     (r"\bpat[A-Za-z0-9]{14}\.[A-Za-z0-9]{20,}", "token de Airtable"),
     (r"\bkey[A-Za-z0-9]{14}\b", "API key de Airtable"),
@@ -79,8 +79,10 @@ def main():
             errores.append(f"{n}: nombre sin prefijo felipe-")
         if "## Cómo se engrana en Felipe OS" not in t:
             errores.append(f"{n}: falta la sección 'Cómo se engrana en Felipe OS'")
-        if "verse-trazabilidad" not in t:
-            errores.append(f"{n}: no registra en TRAZABILIDAD (no menciona verse-trazabilidad)")
+        if "felipe-trazabilidad" not in t:
+            errores.append(f"{n}: no registra en TRAZABILIDAD (no menciona felipe-trazabilidad)")
+        if "tblXVY1dEl79x3uVW" in t or "verse-trazabilidad" in t:
+            errores.append(f"{n}: usa la TRAZABILIDAD de Verse; Felipe OS registra en la base FELIPE con felipe-trazabilidad")
         if n not in catalogo:
             errores.append(f"{n}: no está en el catálogo de Felipe OS (catalogo.md)")
         if "mcp__Gmail__" in t:
