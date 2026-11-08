@@ -1,8 +1,8 @@
 ---
 name: "felipe-recurrentes"
 model: haiku
-description: "Proyecta las actividades personales recurrentes de Felipe (Nubank, Medisanitas, Plan Dental, administración y cuota del Apto 801) en la tabla RECURRENTES de la base FELIPE: al final de cada mes crea las del mes siguiente sin duplicar. Corre sola el día 28, ejecutada por Verse OS · Diario. Úsalo también con \"/felipe-recurrentes\", \"proyecta mis recurrentes\", \"mis pendientes personales\", \"listo [actividad]\" o \"agrega [actividad] a mis recurrentes\"."
-compatibility: Requiere Airtable conectado y el plugin verse (verse-trazabilidad)
+description: "Proyecta las actividades personales recurrentes de Felipe (Nubank, Medisanitas, Plan Dental, administración y cuota del Apto 801) en la tabla RECURRENTES de la base FELIPE: al final de cada mes crea las del mes siguiente sin duplicar. Corre sola el día 28 con la tarea Felipe OS · Recurrentes. Úsalo también con \"/felipe-recurrentes\", \"proyecta mis recurrentes\", \"mis pendientes personales\", \"listo [actividad]\" o \"agrega [actividad] a mis recurrentes\"."
+compatibility: Requiere Airtable conectado
 ---
 
 # felipe-recurrentes
@@ -46,9 +46,9 @@ Pendientes vencidas: <actividad · fecha>
 ## Cómo se engrana en Felipe OS
 
 - Lee: RECURRENTES (base FELIPE `appJP5HcHMyhPRdcA`) y `references/calendario.md`.
-- La ejecuta: Verse OS · Diario el día 28 (reintento hasta fin de mes si no hay Corrida Felipe recurrentes del mes siguiente), que la despacha desde este plugin; Felipe en conversación ("proyecta mis recurrentes", "listo [actividad]").
-- Leen lo que deja: `verse-brief-diario` (bloque PERSONAL: RECURRENTES de la base FELIPE con Fecha hasta hoy), `felipe-os` (actividades vencidas, solo lectura), `verse-os` (control 12: Corrida Felipe recurrentes desde el día 1 del mes siguiente).
+- La ejecuta: la tarea Felipe OS · Recurrentes (días 28 a 31, 7:11; candado: Corrida Felipe recurrentes del mes siguiente en la TRAZABILIDAD de la base FELIPE); Felipe en conversación ("proyecta mis recurrentes", "listo [actividad]").
+- Leen lo que deja: `felipe-os` (actividades vencidas, solo lectura), la tarea Felipe OS · Recurrentes (candado) y, en solo lectura, el bloque PERSONAL del brief de Verse.
 
 ## Registro en TRAZABILIDAD (obligatorio)
 
-Cada vez que esta skill corre — en conversación o en tarea programada — termina cargando `verse-trazabilidad` (plugin `verse`) y siguiendo su modo `registro`: Proceso `Felipe recurrentes`, Línea `Personal`, en la TRAZABILIDAD de Verse, una fila Corrida con Encontró / Hizo y un Pendiente por cada cosa que alguien deba revisar. Si te ejecuta Verse OS · Diario, sí registras tu propia Corrida: es tu huella y tu candado. Si la tarea programada que te disparó trae sus propias instrucciones de registro, síguelas en lugar de esta sección.
+Cada vez que esta skill corre — en conversación o en tarea programada — termina cargando `felipe-trazabilidad` y siguiendo su modo `registro`: Proceso `Felipe recurrentes`, Mes = el mes proyectado, en la TRAZABILIDAD de la base FELIPE, una fila Corrida con Encontró / Hizo y un Pendiente por cada cosa que alguien deba revisar. En la tarea programada también registras tu Corrida: es tu huella y tu candado. Si la tarea programada que te disparó trae sus propias instrucciones de registro, síguelas en lugar de esta sección.

@@ -63,4 +63,4 @@ Lee las últimas 4 a 8 semanas y da: ejercicios que progresaron (peso o reps), e
 
 ## Registro en TRAZABILIDAD
 
-Excepción al registro obligatorio: la tabla GYM es su propia huella, así que esta skill no deja Corrida en TRAZABILIDAD por cada sesión (decisión de Felipe del 8 nov 2026: mantenerlo simple). Solo si una escritura en GYM falla y no se puede reintentar, carga `verse-trazabilidad` (plugin `verse`) modo `registro` y deja un Pendiente Proceso `Manual`, Línea `Personal`, Responsable Felipe, con el nombre del ejercicio y la fecha que no quedaron guardados.
+Excepción al registro obligatorio: la tabla GYM es su propia huella, así que esta skill no deja Corrida en la TRAZABILIDAD de la base FELIPE por cada sesión (decisión de Felipe del 8 nov 2026: mantenerlo simple). Solo si una escritura en GYM falla y no se puede reintentar, carga `felipe-trazabilidad` modo `registro` y deja un Pendiente Proceso `Felipe gym`, con el nombre del ejercicio y la fecha que no quedaron guardados.

@@ -2,7 +2,7 @@
 
 Fuente única de las skills de Felipe OS, el sistema personal de Felipe Tobar. Claude.ai sincroniza este repositorio como marketplace de la organización, junto con `verse-plugins` y `cc-plugins`.
 
-- `plugins/felipe/` — el plugin con las 3 skills de Felipe OS: felipe-os, felipe-recurrentes y felipe-gym. Datos personales en la base FELIPE de Airtable (`appJP5HcHMyhPRdcA`).
+- `plugins/felipe/` — el plugin con las 4 skills de Felipe OS: felipe-os, felipe-trazabilidad, felipe-recurrentes y felipe-gym. Datos personales en la base FELIPE de Airtable (`appJP5HcHMyhPRdcA`).
 - Para publicar un cambio: subir la versión en `plugins/felipe/.claude-plugin/plugin.json` y fusionar el PR en `main`.
-- Depende del plugin `verse`: `verse-trazabilidad` (registro), `verse-marca` (formato) y `os-correo` (lectura del correo personal por Composio).
-- Sin brief propio ni tareas programadas: lo personal sale en el bloque PERSONAL del brief de Verse.
+- Independiente de Verse OS desde el 8 nov 2026. Del plugin `verse` solo usa `os-correo` (lectura del correo personal por Composio).
+- Una tarea programada: Felipe OS · Recurrentes (días 28 a 31). Sin brief propio: el brief de Verse lee la base FELIPE en solo lectura para su bloque PERSONAL.

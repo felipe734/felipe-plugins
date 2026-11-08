@@ -7,7 +7,7 @@
     {
       "name": "felipe",
       "source": "./plugins/felipe",
-      "description": "Felipe OS: sistema personal de Felipe Tobar. Pendientes personales, recurrentes y registro de gimnasio en la base FELIPE, y correo personal (colas personal, finanzas y sistema). Comparte TRAZABILIDAD, verse-trazabilidad, verse-marca y os-correo con el plugin verse."
+      "description": "Felipe OS: sistema personal de Felipe Tobar, independiente de Verse OS. Registro, recurrentes y gimnasio en la base FELIPE, con tarea programada propia; lee el correo personal con os-correo del plugin verse."
     }
   ]
 }
