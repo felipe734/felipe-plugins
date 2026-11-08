@@ -1,0 +1,11 @@
+# Reglas de este repositorio
+
+Este repositorio es la fuente única de las skills de Felipe OS, el sistema personal de Felipe Tobar. Claude.ai lo sincroniza como marketplace; el plugin se llama `felipe`. Es hermano de `felipe734/verse-plugins` y `felipe734/cc-plugins` y sigue sus mismas convenciones.
+
+1. Toda skill nueva o cambio se hace aquí, nunca como skill suelta en la cuenta ni como zip para subir a mano.
+2. Flujo: rama nueva con prefijo `claude/` → cambio → `python3 plugins/felipe/scripts/validar_skills.py --base origin/main` en verde → subir `version` en `plugins/felipe/.claude-plugin/plugin.json` → actualizar el conteo del README → pull request → fusionar en `main`. El validador corre también en GitHub (`.github/workflows/validar.yml` y dentro del auto-merge): en rojo no hay fusión automática. `.github/workflows/auto-merge.yml` fusiona sola los pull requests de ramas `claude/` que solo tocan el plugin y suben la versión.
+3. Prefijo `felipe-` para toda skill. Cada skill sigue el checklist de `plugins/felipe/skills/felipe-os/references/catalogo.md`: registro con `verse-trazabilidad` (Línea `Personal`), sección "Cómo se engrana en Felipe OS", fila en el catálogo y en SKILLS. Para crear o mejorar skills usa `verse-skills` del plugin `verse` con estas reglas encima.
+4. Lo compartido vive en el plugin `verse` y no se copia aquí: `verse-trazabilidad` (Felipe OS escribe por ahora en la TRAZABILIDAD de Verse, base 9. VERSE OS `appylcO9bGU5EBgV2`, tabla `tblXVY1dEl79x3uVW`, siempre con Línea `Personal`; la tabla propia queda para después), `verse-marca` y `os-correo` (cuenta `felipe-personal`; nunca `mcp__Gmail__*`). La tabla FELIPE y la skill `felipe-recurrentes` siguen en el plugin `verse` por ahora. Si un cambio de aquí necesita un cambio allá, se abre el PR allá en el mismo paquete.
+5. Felipe OS no tiene brief propio: lo personal sale en el bloque PERSONAL del brief de Verse (`verse-brief-diario`). Aquí no se crean tareas programadas ni skills de brief.
+6. Nada de credenciales, contraseñas, cuentas bancarias, datos de salud ni datos financieros personales en el repositorio. Las skills leen eso en Airtable o en el correo cuando corren; nunca lo escriben aquí ni en TRAZABILIDAD.
+7. Español, marca Verse, sin signos de admiración.

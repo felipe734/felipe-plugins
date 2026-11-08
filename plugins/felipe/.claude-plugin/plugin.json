@@ -1,0 +1,8 @@
+{
+  "name": "felipe",
+  "version": "1.0.0",
+  "description": "Felipe OS: sistema personal de Felipe Tobar. Motor felipe-os a pedido: pendientes Línea Personal de TRAZABILIDAD, actividades de la tabla FELIPE y correo personal vía os-correo (colas personal, finanzas y sistema). Sin brief propio ni tareas programadas. Requiere el plugin verse instalado: usa verse-trazabilidad, verse-marca y os-correo.",
+  "author": {
+    "name": "Felipe Tobar"
+  }
+}

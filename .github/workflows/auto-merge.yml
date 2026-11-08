@@ -1,0 +1,52 @@
+name: Auto-merge de Claude
+
+# Fusiona solo los pull requests de ramas claude/... cuando tocan únicamente
+# el plugin y suben la versión. Cualquier otra cosa queda para revisión manual.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: startsWith(github.head_ref, 'claude/') && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Revisar alcance
+        run: |
+          git fetch origin "${{ github.base_ref }}"
+          CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")
+          echo "$CHANGED"
+          if echo "$CHANGED" | grep -vqE '^(plugins/|\.claude-plugin/|README\.md$|CLAUDE\.md$)'; then
+            echo "Hay archivos fuera del plugin: queda para revisión manual."; exit 1
+          fi
+          OLD=$(git show "origin/${{ github.base_ref }}:plugins/felipe/.claude-plugin/plugin.json" | python3 -c "import json,sys;print(json.load(sys.stdin)['version'])")
+          NEW=$(python3 -c "import json;print(json.load(open('plugins/felipe/.claude-plugin/plugin.json'))['version'])")
+          echo "Versión $OLD -> $NEW"
+          [ "$OLD" != "$NEW" ] || { echo "Falta subir la versión del plugin."; exit 1; }
+
+      - name: Validar manifiestos
+        run: |
+          python3 -c "import json;json.load(open('.claude-plugin/marketplace.json'));json.load(open('plugins/felipe/.claude-plugin/plugin.json'))"
+          test "$(find plugins/felipe/skills -name SKILL.md | wc -l)" -gt 0
+
+      - name: Validar skills (checklist de Verse OS)
+        run: |
+          if [ -f plugins/felipe/scripts/validar_skills.py ]; then
+            python3 plugins/felipe/scripts/validar_skills.py --base "origin/${{ github.base_ref }}"
+          else
+            echo "Sin validador en esta versión: se omite."
+          fi
+
+      - name: Fusionar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ github.event.pull_request.number }}" --squash --delete-branch --repo "${{ github.repository }}"

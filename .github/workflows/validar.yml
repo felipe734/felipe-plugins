@@ -1,0 +1,32 @@
+name: Validar plugin Felipe
+
+# Corre el checklist de Verse OS en todo pull request y en cada push a main.
+# No fusiona nada: solo deja el resultado en verde o en rojo.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Checklist de skills Felipe
+        run: |
+          if [ -f plugins/felipe/scripts/validar_skills.py ]; then
+            if [ -n "${{ github.base_ref }}" ]; then
+              git fetch origin "${{ github.base_ref }}"
+              python3 plugins/felipe/scripts/validar_skills.py --base "origin/${{ github.base_ref }}"
+            else
+              python3 plugins/felipe/scripts/validar_skills.py
+            fi
+          else
+            echo "Sin validador en esta versión: se omite."
+          fi

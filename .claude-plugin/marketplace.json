@@ -1,0 +1,11 @@
+{
+  "name": "felipe-plugins",
+  "owner": { "name": "Felipe Tobar" },
+  "plugins": [
+    {
+      "name": "felipe",
+      "source": "./plugins/felipe",
+      "description": "Felipe OS: sistema personal de Felipe Tobar. Pendientes personales, actividades de la tabla FELIPE y correo personal (colas personal, finanzas y sistema), a pedido. Comparte TRAZABILIDAD, verse-trazabilidad, verse-marca y os-correo con el plugin verse."
+    }
+  ]
+}
