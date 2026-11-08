@@ -1,7 +1,7 @@
 {
   "name": "felipe",
-  "version": "1.0.0",
-  "description": "Felipe OS: sistema personal de Felipe Tobar. Motor felipe-os a pedido: pendientes Línea Personal de TRAZABILIDAD, actividades de la tabla FELIPE y correo personal vía os-correo (colas personal, finanzas y sistema). Sin brief propio ni tareas programadas. Requiere el plugin verse instalado: usa verse-trazabilidad, verse-marca y os-correo.",
+  "version": "1.1.0",
+  "description": "Felipe OS: sistema personal de Felipe Tobar. felipe-os a pedido (pendientes Línea Personal, recurrentes y correo personal vía os-correo), felipe-recurrentes (proyección mensual de pagos personales, la despacha Verse OS · Diario el día 28) y felipe-gym (registro de gimnasio). Datos en la base FELIPE de Airtable. Requiere el plugin verse: usa verse-trazabilidad, verse-marca y os-correo.",
   "author": {
     "name": "Felipe Tobar"
   }

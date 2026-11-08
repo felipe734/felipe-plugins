@@ -10,15 +10,18 @@ Felipe OS escribe por ahora en la **TRAZABILIDAD de Verse** (base 9. VERSE OS `a
 |---|---|---|---|---|---|
 | felipe-os | Felipe OS | Personal | A pedido | Felipe ("felipe-os", "qué tengo personal", "revisa mi correo personal") | Motor: pendientes personales, actividades FELIPE, correo del OS felipe; solo escribe Pendientes y su Corrida con Línea Personal |
 | ↳ correo personal (vía `os-correo` os=felipe) | Correo (o Felipe recurrentes si es el cobro de una actividad) | Personal | Cada corrida de felipe-os en modo ejecutar | felipe-os | Pendientes con Link al hilo y Ref externa el threadId |
+| felipe-recurrentes | Felipe recurrentes | Personal | Mensual, día 28 (reintento hasta fin de mes) | Verse OS · Diario (la despacha desde este plugin) y Felipe en conversación | Automático: proyecta RECURRENTES de la base FELIPE |
+| felipe-gym | — (sin Corrida; Pendiente Manual solo si falla una escritura) | Personal | Por sesión de gimnasio | Felipe en conversación ("hoy día X", "registra gym", "cómo voy en el gym") | Registro: filas en GYM de la base FELIPE |
 
 ## Lo que sigue en el plugin `verse` (no se copia aquí)
 
 | Skill / proceso | Dónde vive | Relación con Felipe OS |
 |---|---|---|
-| felipe-recurrentes | plugin `verse`, Proceso `Felipe recurrentes`, Línea Personal | Proyecta la tabla FELIPE el día 28 desde Verse OS · Diario; felipe-os solo la lee |
-| verse-brief-diario, bloque PERSONAL | plugin `verse` | Muestra cada mañana los Pendientes Línea Personal, la tabla FELIPE y el correo del OS felipe; es el brief de Felipe OS |
+| verse-brief-diario, bloque PERSONAL | plugin `verse` | Muestra cada mañana los Pendientes Línea Personal, RECURRENTES de la base FELIPE y el correo del OS felipe; es el brief de Felipe OS |
 | os-correo | plugin `verse` | Lee las seis cuentas y devuelve a felipe-os solo las colas personal, finanzas y sistema (sección 4 de `ruteo.md`). SVMG queda en Verse (regla C10) |
 | verse-trazabilidad | plugin `verse` | Registro, cierre y checks; Felipe OS usa la tabla de Verse con Línea Personal |
+
+La base FELIPE (8 nov 2026) es la base propia de Felipe OS para datos personales; la tabla FELIPE de 9. VERSE OS (`tbl9M7iHSs3xVMiU3`) quedó en desuso.
 
 Procesos que Felipe OS escribe en TRAZABILIDAD: Felipe OS, Correo, Felipe recurrentes, Manual. `Felipe OS` puede no existir todavía como opción del campo Proceso (`fldGUOALzCds6je18`): se escribe con `typecast: true` y, si falla, con `Manual`.
 
@@ -31,7 +34,8 @@ Ninguna. Felipe OS corre solo a pedido. Si algún día se programa, el prompt vi
 | Base | Tabla | Para qué |
 |---|---|---|
 | 9. VERSE OS `appylcO9bGU5EBgV2` | TRAZABILIDAD `tblXVY1dEl79x3uVW` | Pendientes y Corrida con Línea Personal (lectura y escritura) |
-| 9. VERSE OS `appylcO9bGU5EBgV2` | FELIPE `tbl9M7iHSs3xVMiU3` | Actividades personales Pendiente con Fecha hasta hoy (solo lectura) |
+| FELIPE `appJP5HcHMyhPRdcA` (workspace 1. C&C) | RECURRENTES `tblgowyhDZzl8hDe9` | Actividades personales; felipe-recurrentes escribe, felipe-os lee |
+| FELIPE `appJP5HcHMyhPRdcA` | GYM `tblbKKuwaOjYL4DL0` | Sesiones de gimnasio; solo felipe-gym |
 | Correo por Composio (cuenta `felipe-personal` `gmail_codist-plass`, jtobar1998@gmail.com, más lo ruteado a `felipe` desde las otras cinco) | — | A través de `os-correo` os=felipe; solo lectura; nunca envía |
 
 ## Cómo se integra una skill nueva (checklist obligatorio)
