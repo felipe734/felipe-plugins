@@ -1,6 +1,6 @@
 {
   "name": "felipe",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Felipe OS: sistema personal de Felipe Tobar, independiente de Verse OS. felipe-os a pedido (pendientes, recurrentes y correo personal vía os-correo), felipe-trazabilidad (registro propio en la base FELIPE), felipe-recurrentes (proyección mensual con la tarea Felipe OS · Recurrentes) y felipe-gym (registro de gimnasio). Del plugin verse solo usa os-correo.",
   "author": {
     "name": "Felipe Tobar"
