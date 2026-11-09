@@ -1,7 +1,7 @@
 ---
 tarea: "Felipe OS · Recurrentes"
 horario: "CRON_TZ=America/Bogota 11 7 28-31 * *"
-modelo: claude-haiku-5-5
+modelo: claude-opus-5-5
 skill: felipe-recurrentes
 ---
 
